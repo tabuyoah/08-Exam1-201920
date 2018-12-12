@@ -3,8 +3,8 @@ Exam 1, problem 4.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Alexander Tabuyo.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -74,6 +74,32 @@ def problem4(number_of_stairs, step_size, starting_point, window):
     #            of the stair steps.
     # -------------------------------------------------------------------------
 
+
+
+    for k in range(number_of_stairs):
+        upstartx = starting_point.x + k * step_size
+        upstarty = starting_point.y - k * step_size
+        start = rg.Point(upstartx, upstarty)
+
+
+        upendx = starting_point.x + k * step_size
+        upendy = starting_point.y - step_size * (k + 1)
+        upend = rg.Point(upendx, upendy)
+        up = rg.Line(start, upend)
+        up.color = 'magenta'
+        up.thickness = 3
+
+        sidexe = upend.x + step_size 
+        sideye = upend.y
+        sidee = rg.Point(sidexe, sideye)
+
+        side = rg.Line(upend, sidee)
+        side.color = 'black'
+        side.thickness = 3
+
+        side.attach_to(window)
+        up.attach_to(window)
+    window.render()
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
